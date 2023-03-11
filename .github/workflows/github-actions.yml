@@ -1,0 +1,29 @@
+name: Deploy
+on: push
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: launch Docker-compose
+        uses: appleboy/ssh-action@master
+        env:
+          MONGO_URL: ${{ secrets.MONGO_URL }}
+          BACK_END_PORT: ${{ secrets.BACK_END_PORT }}
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
+          envs: MONGO_URL,BACK_END_PORT
+          script: |
+            pwd
+            if [ ! -d "./TO_DO" ]
+            then
+              git clone git@github.com:VincentBergerault/TO_DO.git
+            fi
+            cd TO_DO
+            git pull origin main
+            echo "this is $MONGO_URL url"
+            echo "this is port $BACK_END_PORT for sure"
+            docker-compose up -d --build --force-recreate

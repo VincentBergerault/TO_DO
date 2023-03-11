@@ -1,0 +1,42 @@
+version: '3'
+services:
+  todo_backend:
+    build:
+      context: ./back_end
+      dockerfile: ./Dockerfile
+    container_name: todo_backend
+    restart: unless-stopped
+    networks:
+      - traefik_network
+    environment:
+      - MONGO_URL=${MONGO_URL}
+      - BACK_END_PORT=${BACK_END_PORT}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik_network"
+      - "traefik.http.routers.todo_backend.entrypoints=web,websecure"
+      - "traefik.http.routers.todo_backend.rule=Host(`${TODO_BACKEND_URL}`)"
+      - "traefik.http.services.todo_backend.loadbalancer.server.port=5010"
+      - "traefik.http.routers.todo_backend.tls=true"
+      - "traefik.http.routers.todo_backend.tls.certresolver=leresolver"
+      
+  todo_frontend:
+    build:
+      context: ./front_end
+      dockerfile: ./Dockerfile
+    container_name: todo_frontend
+    restart: unless-stopped
+    networks:
+      - traefik_network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik_network"
+      - "traefik.http.routers.todo_frontend.entrypoints=web,websecure"
+      - "traefik.http.routers.todo_frontend.rule=Host(`${TODO_FRONTEND_URL}`)"
+      - "traefik.http.services.todo_frontend.loadbalancer.server.port=8080"
+      - "traefik.http.routers.todo_frontend.tls=true"
+      - "traefik.http.routers.todo_frontend.tls.certresolver=leresolver"
+
+networks:
+  traefik_network:
+    external: true
