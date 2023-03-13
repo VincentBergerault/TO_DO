@@ -1,6 +1,9 @@
 {
-    "eslint.format.enable": true,
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
-    }
+  "eslint.format.enable": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "editor.formatOnSave": true
 }

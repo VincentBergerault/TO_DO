@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "mhutchie.git-graph",
+    "octref.vetur",
+    "dbaeumer.vscode-eslint"
+  ]
+}
