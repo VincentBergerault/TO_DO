@@ -7,9 +7,6 @@
 <script>
 export default {
   name: "TOBUY",
-  props: {
-    msg: String,
-  },
 };
 </script>
 

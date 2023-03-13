@@ -5,5 +5,15 @@
   },
   "eslint.workingDirectories": [{ "mode": "auto" }],
   "terminal.integrated.defaultProfile.windows": "Git Bash",
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "git.confirmSync": false,
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

@@ -10,9 +10,6 @@ import GoalCard from "./GoalCard.vue";
 export default {
   name: "GoalsComponant",
   components: { GoalCard },
-  props: {
-    msg: String,
-  },
   data() {
     return {};
   },

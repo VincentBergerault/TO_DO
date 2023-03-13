@@ -1,15 +1,15 @@
 module.exports = {
   extends: ["eslint:recommended", "plugin:vue/vue3-recommended", "prettier"],
-  plugins: ["vue", "html"],
+  plugins: ["vue"],
   rules: {
     // override/add rules settings here, such as:
     // 'vue/no-unused-vars': 'error'
   },
   parserOptions: {
-    ecmaVersion: "latest",
+    ecmaVersion: 6,
     sourceType: "module",
     ecmaFeatures: {
-      jsx: true,
+      modules: true,
     },
   },
 };

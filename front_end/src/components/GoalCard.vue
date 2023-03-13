@@ -7,9 +7,6 @@
 <script>
 export default {
   name: "GoalCard",
-  props: {
-    msg: String,
-  },
 };
 </script>
 

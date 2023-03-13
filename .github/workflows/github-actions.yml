@@ -24,6 +24,4 @@ jobs:
             fi
             cd TO_DO
             git pull origin main
-            echo "this is $MONGO_URL url"
-            echo "this is port $BACK_END_PORT for sure"
             docker-compose up -d --build --force-recreate

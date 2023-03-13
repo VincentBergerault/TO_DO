@@ -7,9 +7,6 @@
 <script>
 export default {
   name: "ToDo",
-  props: {
-    msg: String,
-  },
 };
 </script>
 

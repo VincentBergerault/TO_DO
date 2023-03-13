@@ -31,9 +31,6 @@ import TOBUY from "./TOBUY.vue";
 export default {
   name: "HelloWorld",
   components: { Goals, TODO, TOBUY },
-  props: {
-    msg: String,
-  },
   data() {
     return {
       tab: null,
