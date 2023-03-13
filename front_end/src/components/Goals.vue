@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import GoalCard from "./t.vue";
+import GoalCard from "./GoalCard.vue";
 export default {
   name: "GoalsComponant",
   components: { GoalCard },

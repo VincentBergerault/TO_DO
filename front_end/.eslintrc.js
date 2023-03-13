@@ -6,7 +6,7 @@ module.exports = {
     // 'vue/no-unused-vars': 'error'
   },
   parserOptions: {
-    ecmaVersion: latest,
+    ecmaVersion: "latest",
     sourceType: "module",
     ecmaFeatures: {
       jsx: true,

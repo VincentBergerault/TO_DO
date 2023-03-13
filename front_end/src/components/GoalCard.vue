@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>TO BUY</h1>
+    <v-card text="..." variant="tonal"></v-card>
   </div>
 </template>
 
