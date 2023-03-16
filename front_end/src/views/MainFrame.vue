@@ -24,9 +24,9 @@
 </template>
 
 <script>
-import Goals from "./Goals.vue";
-import TODO from "./TODO.vue";
-import TOBUY from "./TOBUY.vue";
+import Goals from "../components/Goals.vue";
+import TODO from "../components/TODO.vue";
+import TOBUY from "../components/TOBUY.vue";
 
 export default {
   name: "HelloWorld",
@@ -36,6 +36,7 @@ export default {
       tab: null,
     };
   },
+  methods() {},
 };
 </script>
 

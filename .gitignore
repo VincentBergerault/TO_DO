@@ -1,2 +1,4 @@
 back_end/node_modules
+back_end/.env
+front_end/.env
 web_app/node_modules

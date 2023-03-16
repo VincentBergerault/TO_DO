@@ -1,5 +1,6 @@
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
+/*
 const SECRET_KEY = 'secret_key';
 
 const authMiddleware = (req, res, next) => {
@@ -22,22 +23,35 @@ const authMiddleware = (req, res, next) => {
   });
 };
 
-const login = (req, res) => {
-  // Get the user's credentials from the request body
-  const { username, password } = req.body;
+*/
+const login = async (req, res) => {
+  const { email, password } = req.body;
 
-  // Authenticate the user's credentials
-  if (username === 'user' && password === 'password') {
-    // If the credentials are valid, generate a JWT
-    const token = jwt.sign({ user: username }, SECRET_KEY);
-    return res.json({ token });
+  // Find the user with the specified email address
+  const user = await User.findOne({ email });
+
+  if (!user) {
+    // If the user is not found, return an error response
+    return res
+      .status(400)
+      .json({ success: false, message: "Invalid email or password." });
   }
 
-  // If the credentials are invalid, return a 401 error
-  return res.status(401).json({ error: 'Unauthorized' });
+  // Compare the user's password with the hashed password stored in the database
+  const isMatch = await bcrypt.compare(password, user.password);
+
+  if (!isMatch) {
+    // If the passwords don't match, return an error response
+    return res
+      .status(400)
+      .json({ success: false, message: "Invalid email or password." });
+  }
+
+  // If the login is successful, return a success response
+  return res.json({ success: true });
 };
 
 module.exports = {
-  authMiddleware,
+  //authMiddleware,
   login,
 };

@@ -1,6 +1,7 @@
 <template>
-  <div class="hello">
+  <div>
     <h1>TO DO</h1>
+    <btn></btn>
   </div>
 </template>
 

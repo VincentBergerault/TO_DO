@@ -36,7 +36,16 @@ valider la tache et elle passe dans les validés
 
 
 
-#### Nice to have
+#### TODO 
 
-Créer un widget avec les toutes TODO les plus importantes 
+
+auto redirect to home for all pathes
+
+Handle DB Password User 
+connection secured
+
++ create a dev DB on localhost
+
+handle communication in development with dev DB
+
 
