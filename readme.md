@@ -1,51 +1,37 @@
-# Principe 
+# Principe
 
-App web, windows et phone. 
+App web, windows et phone.
 
-Tout est basé en DB sur mon serveur. 
+Tout est basé en DB sur mon serveur.
 
 Echnage sécuriser avec le serveur.
-
 
 Backend Node JS + MongoDB
 App Android pour envoyer en DB des events
 
 Dés que je fais qqchose sur un TO DO, ça envoi en base. au lancement de l'app fetch la DB.
-Rien n'est store en local 
-
-
-
+Rien n'est store en local
 
 ## Fonctionnalité
 
 ### TO DO
 
-créer des groupes de d'éléments des sous groupes 
+créer des groupes de d'éléments des sous groupes
 Soit en dossier soit en minimiser avec la flèche à droite '^'
 
-CHanger la couleur de la chose à faire, pour gérer la prio. 
+CHanger la couleur de la chose à faire, pour gérer la prio.
 
 Dans la liste elle est uniquement montrer avec le titre.
 mais si on clique dessus on a plus de détails
 
 Modifier la tache
 supprimer la tache
-supprimer la corbeille 
+supprimer la corbeille
 valider la tache et elle passe dans les validés
 
-
-
-
-#### TODO 
-
+#### TODO
 
 auto redirect to home for all pathes
 
-Handle DB Password User 
+Handle DB Password User
 connection secured
-
-+ create a dev DB on localhost
-
-handle communication in development with dev DB
-
-

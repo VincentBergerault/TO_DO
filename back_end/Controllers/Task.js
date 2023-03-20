@@ -1,9 +1,9 @@
-const express = require('express');
-const Task = require('../models/Task.model');
+const express = require("express");
+const Task = require("../models/Task.model");
 
 const router = express.Router();
 
-router.post('/task', (req, res) => {
+router.post("/task", (req, res) => {
   // Create a new task from the request body
   const newTask = new Task(req.body);
 
@@ -17,7 +17,7 @@ router.post('/task', (req, res) => {
 });
 
 // Get all tasks
-router.get('/task', (req, res) => {
+router.get("/task", (req, res) => {
   Task.find((error, tasks) => {
     if (error) {
       return res.status(500).json({ error: error.message });
@@ -27,7 +27,7 @@ router.get('/task', (req, res) => {
 });
 
 // Get a specific task by ID
-router.get('/task/:id', (req, res) => {
+router.get("/task/:id", (req, res) => {
   Task.findById(req.params.id, (error, task) => {
     if (error) {
       return res.status(500).json({ error: error.message });

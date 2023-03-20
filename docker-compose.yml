@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 services:
   todo_backend:
     build:
@@ -16,10 +16,10 @@ services:
       - "traefik.docker.network=traefik_network"
       - "traefik.http.routers.todo_backend.entrypoints=web,websecure"
       - "traefik.http.routers.todo_backend.rule=Host(`${TODO_BACKEND_URL}`)"
-      - "traefik.http.services.todo_backend.loadbalancer.server.port=5010"
+      - "traefik.http.services.todo_backend.loadbalancer.server.port=${BACK_END_PORT}"
       - "traefik.http.routers.todo_backend.tls=true"
       - "traefik.http.routers.todo_backend.tls.certresolver=leresolver"
-      
+
   todo_frontend:
     build:
       context: ./front_end

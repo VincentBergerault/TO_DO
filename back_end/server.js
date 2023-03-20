@@ -1,6 +1,7 @@
 const express = require("express");
+const cors = require("cors");
 const index = require("./indexDB");
-const { /* authMiddleware, */ login } = require("./Middleware/Authentication");
+const { login } = require("./Middleware/Authentication");
 require("dotenv").config();
 
 const itemRoutes = require("./Controllers/Item");
@@ -10,11 +11,10 @@ index();
 
 const app = express();
 
+app.use(cors());
+
 app.use(express.json());
 app.post("/login", login);
-
-// Apply the authentication middleware to all routes except /login
-// app.use(authMiddleware);
 
 // This endpoint will only be accessible if the request has a valid JWT
 app.get("/", (req, res) => {

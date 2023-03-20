@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from "@/axios.js";
 
 export default {
   name: "Login",
@@ -29,7 +29,7 @@ export default {
   methods: {
     async login() {
       // Use Axios or another HTTP library to send a POST request to the login API endpoint
-      const response = await axios.post("/api/login", {
+      const response = await axios.post("/login", {
         email: this.email,
         password: this.password,
       });
