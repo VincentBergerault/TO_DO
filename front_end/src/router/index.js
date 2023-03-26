@@ -1,27 +1,50 @@
 // eslint-disable-next-line no-unused-vars
 import * as VueRouter from "vue-router";
-import MainFrame from "../views/MainFrame.vue";
 import Login from "../views/Login.vue";
+import Home from "../views/Home.vue";
+import Goals from "../views/Goals.vue";
+import Todo from "../views/Todo.vue";
+import Tobuy from "../views/Tobuy.vue";
 
 // eslint-disable-next-line no-unused-vars
 const routes = [
   {
     path: "/",
     name: "home",
-    component: MainFrame,
+    component: Home,
     meta: { requiresAuth: true },
   },
   {
-    path: "/dashboard",
-    name: "dashboard",
-    component: MainFrame,
-    meta: { requiresAuth: true }, // add this meta property to require authentication
+    path: "/goals",
+    name: "goals",
+    component: Goals,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: "/todo",
+    name: "todo",
+    component: Todo,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: "/tobuy",
+    name: "tobuy",
+    component: Tobuy,
+    meta: { requiresAuth: true },
   },
   {
     path: "/login",
     name: "login",
     component: Login,
+    beforeEnter: (to, from, next) => {
+      if (isAuthenticated()) {
+        next("/");
+      } else {
+        next();
+      }
+    },
   },
+  { path: "/*", redirect: "/login" },
 ];
 
 const router = new VueRouter.createRouter({
@@ -31,11 +54,9 @@ const router = new VueRouter.createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  const isAuthenticated = localStorage.getItem("token"); // check if the user is authenticated
-
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     // check if the route requires authentication
-    if (!isAuthenticated) {
+    if (!isAuthenticated()) {
       // if the user is not authenticated, redirect to the login page
       next({
         path: "/login",
@@ -53,8 +74,12 @@ router.beforeEach((to, from, next) => {
 
 // Only use HTML5 history mode in production
 if (process.env.NODE_ENV != "development") {
-  console.log("caca");
   router.mode = "history";
+}
+
+function isAuthenticated() {
+  const token = localStorage.getItem("token");
+  return !!token;
 }
 
 export default router;

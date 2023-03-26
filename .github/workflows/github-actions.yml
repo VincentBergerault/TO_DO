@@ -10,12 +10,15 @@ jobs:
         env:
           MONGO_URL: ${{ secrets.MONGO_URL }}
           BACK_END_PORT: ${{ secrets.BACK_END_PORT }}
+          USER_EMAIL: ${{ secrets.USER_EMAIL }}
+          USER_PWD: ${{ secrets.USER_PWD }}
+          COOKIE_KEY: ${{ secrets.COOKIE_KEY }}
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.PORT }}
-          envs: MONGO_URL,BACK_END_PORT
+          envs: MONGO_URL,BACK_END_PORT,USER_EMAIL,USER_PWD,COOKIE_KEY
           script: |
             pwd
             if [ ! -d "./TO_DO" ]

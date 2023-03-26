@@ -1,32 +1,30 @@
 const login = async (req, res) => {
   const { email, password } = req.body;
-
-  //const user = await User.findOne({ email });
-
-  /*
-  if (!user) {
-    // If the user is not found, return an error response
+  if (email !== process.env.USER_EMAIL && password !== process.env.USER_PWD) {
     return res
       .status(400)
       .json({ success: false, message: "Invalid email or password." });
-  }*/
-
-  // const isMatch = await bcrypt.compare(password, user.password);
-  /*if (!isMatch) {
-    return res
-      .status(400)
-      .json({ success: false, message: "Invalid email or password." });
+  } else {
+    req.session.user = {
+      authenticated: true,
+      username: req.body.username,
+    };
+    // If the login is successful, return a success response
+    return res.json({ success: true });
   }
-  */
-  if (email !== process.env.TEMP_EMAIL && password !== process.env.TEMP_PWD) {
-    return res
-      .status(400)
-      .json({ success: false, message: "Invalid email or password." });
-  }
-  // If the login is successful, return a success response
-  return res.json({ success: true });
 };
+
+function isAuthenticated(req, res, next) {
+  if (req.session.user && req.session.user.authenticated) {
+    // the user is authenticated, so continue with the request
+    return next();
+  } else {
+    // the user is not authenticated, so redirect to the login page
+    res.status(401).send({ error: "Unauthenticated" });
+  }
+}
 
 module.exports = {
   login,
+  isAuthenticated,
 };

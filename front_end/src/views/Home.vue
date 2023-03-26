@@ -1,18 +1,19 @@
 <template>
   <div class="hello">
-    <h1>Goals</h1>
-    <GoalCard />
+    <h1>Home</h1>
   </div>
 </template>
 
 <script>
-import GoalCard from "./GoalCard.vue";
 export default {
-  name: "GoalsComponant",
-  components: { GoalCard },
+  name: "HelloWorld",
+  components: {},
   data() {
-    return {};
+    return {
+      tab: null,
+    };
   },
+  methods() {},
 };
 </script>
 
@@ -21,17 +22,14 @@ export default {
 h3 {
   margin: 40px 0 0;
 }
-
 ul {
   list-style-type: none;
   padding: 0;
 }
-
 li {
   display: inline-block;
   margin: 0 10px;
 }
-
 a {
   color: #42b983;
 }

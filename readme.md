@@ -35,3 +35,15 @@ auto redirect to home for all pathes
 
 Handle DB Password User
 connection secured
+
+
+## DONE
+
+This project will be done when : 
+
+- perfect Security 
+- perfect CI
+- able to moev my items on the front 
+    - list for to buy and to do
+    - canva for goals
+- the backend create a "resolution idea" with CHat gpt api
