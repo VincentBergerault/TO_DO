@@ -34,5 +34,21 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  height: 100%;
+  background-color: rgba(0, 127, 79, 1); /* Dark green */
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 127, 79, 1),
+    rgb(181, 255, 203)
+  ); /* Fade to light green */
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #007f4f;
+  overflow: hidden;
 }
 </style>
