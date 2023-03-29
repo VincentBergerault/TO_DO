@@ -4,7 +4,7 @@
   "description": "App web, windows et phone.",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "lint": "eslint --fix --ext .js,.jsx ."
   },
   "author": "",
@@ -15,7 +15,6 @@
     "dotenv": "^16.0.3",
     "eslint-config-prettier": "^8.8.0",
     "express": "^4.18.2",
-    "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.9.1"
   },
   "devDependencies": {

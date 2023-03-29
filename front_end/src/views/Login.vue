@@ -44,7 +44,7 @@ export default {
 
       // If the login is successful, redirect the user to the dashboard page
       if (response.data.success) {
-        localStorage.setItem("token", response.data.token);
+        this.$store.commit("setLoggedIn", true);
         this.$router.push("/");
       } else {
         // Display an error message to the user

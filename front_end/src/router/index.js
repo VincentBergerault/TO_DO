@@ -1,5 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import * as VueRouter from "vue-router";
+import { store } from "@/store";
+
 import Login from "../views/Login.vue";
 import Home from "../views/Home.vue";
 import Goals from "../views/Goals.vue";
@@ -78,8 +80,8 @@ if (process.env.NODE_ENV != "development") {
 }
 
 function isAuthenticated() {
-  const token = localStorage.getItem("token");
-  return !!token;
+  console.log(store.state.isLoggedIn);
+  return store.state.isLoggedIn;
 }
 
 export default router;

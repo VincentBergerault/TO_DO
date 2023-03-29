@@ -14,7 +14,7 @@
         </li>
         <li class="log">
           <div v-if="isLoggedIn">
-            <button class="nav-button">Logout</button>
+            <button class="nav-button" @click="logout()">Logout</button>
           </div>
           <div v-else>
             <router-link to="/login" class="login">Login</router-link>
@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import axios from "@/axios.js";
 export default {
   name: "App",
   data() {
@@ -38,7 +39,13 @@ export default {
     // Check if user is logged in
     // and set isLoggedIn accordingly
   },
-  methods: {},
+  methods: {
+    async logout() {
+      await axios.get("/logout");
+      // Remove the TODO_AUTH cookie
+      this.$store.dispatch("logout");
+    },
+  },
 };
 </script>
 
