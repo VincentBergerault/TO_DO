@@ -23,7 +23,7 @@ app.use(
     origin:
       process.env.DEV === "true"
         ? "http://localhost:8080"
-        : process.env.TODO_FRONTEND_URL,
+        : "https://" + process.env.TODO_FRONTEND_URL,
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     preflightContinue: false,
     optionsSuccessStatus: 204,
