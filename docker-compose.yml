@@ -9,6 +9,8 @@ services:
     networks:
       - traefik_network
     environment:
+      - TODO_BACKEND_URL=${TODO_BACKEND_URL}
+      - TODO_FRONTEND_URL=${TODO_FRONTEND_URL}
       - MONGO_URL=${MONGO_URL}
       - BACK_END_PORT=${BACK_END_PORT}
     labels:
