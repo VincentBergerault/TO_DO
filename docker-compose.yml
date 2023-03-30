@@ -13,6 +13,9 @@ services:
       - TODO_FRONTEND_URL=${TODO_FRONTEND_URL}
       - MONGO_URL=${MONGO_URL}
       - BACK_END_PORT=${BACK_END_PORT}
+      - USER_EMAIL=${USER_EMAIL}
+      - USER_PWD=${USER_PWD}
+      - COOKIE_KEY=${COOKIE_KEY}
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=traefik_network"

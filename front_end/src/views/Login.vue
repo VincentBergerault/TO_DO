@@ -25,6 +25,7 @@
 
 <script>
 import axios from "@/axios.js";
+import bcrypt from "bcryptjs";
 
 export default {
   name: "Login",
@@ -37,9 +38,10 @@ export default {
   methods: {
     async login() {
       // Use Axios or another HTTP library to send a POST request to the login API endpoint
+
       const response = await axios.post("/login", {
         email: this.email,
-        password: this.password,
+        password: await bcrypt.hash(this.password, 10),
       });
 
       // If the login is successful, redirect the user to the dashboard page

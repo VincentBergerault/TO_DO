@@ -1,6 +1,11 @@
+const bcrypt = require("bcryptjs");
+
 const login = async (req, res) => {
   const { email, password } = req.body;
-  if (email !== process.env.USER_EMAIL || password !== process.env.USER_PWD) {
+
+  const match = await bcrypt.compare(process.env.USER_PWD, password);
+  console.log(match);
+  if (email !== process.env.USER_EMAIL || !match) {
     console.log("Invalid email or password.");
     return res
       .status(400)
