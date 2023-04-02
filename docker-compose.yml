@@ -41,12 +41,6 @@ services:
       - "traefik.http.services.todo_frontend.loadbalancer.server.port=8080"
       - "traefik.http.routers.todo_frontend.tls=true"
       - "traefik.http.routers.todo_frontend.tls.certresolver=leresolver"
-      - "traefik.http.middlewares.nextcloud.headers.stsSeconds=155520011"
-      - "traefik.http.middlewares.nextcloud.headers.stsIncludeSubdomains=true"
-      - "traefik.http.middlewares.nextcloud.headers.stsPreload=true"
-      - "traefik.http.middlewares.nextcloud-redirectregex.redirectRegex.permanent=true"
-      - "traefik.http.middlewares.nextcloud_redirect.redirectregex.regex=/.well-known/(card|cal)dav"
-      - "traefik.http.middlewares.nextcloud_redirect.redirectregex.replacement=/remote.php/dav/"
 
 networks:
   traefik_network:
