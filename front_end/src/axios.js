@@ -3,7 +3,7 @@ import { store } from "@/store";
 
 const axiosInstance = axios.create({
   baseURL:
-    process.env.NODE_ENV === "development"
+    process.env.VUE_APP_NODE_ENV === "development"
       ? "http://" + process.env.VUE_APP_TODO_BACKEND_URL
       : "https://" + process.env.VUE_APP_TODO_BACKEND_URL, // Replace this with your API base URL
   withCredentials: true, // enable sending cookies with requests
