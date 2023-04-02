@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import * as VueRouter from "vue-router";
 import { store } from "@/store";
 
@@ -8,7 +7,6 @@ import Goals from "../views/Goals.vue";
 import Todo from "../views/Todo.vue";
 import Tobuy from "../views/Tobuy.vue";
 
-// eslint-disable-next-line no-unused-vars
 const routes = [
   {
     path: "/",
@@ -46,7 +44,7 @@ const routes = [
       }
     },
   },
-  { path: "/*", redirect: "/login" },
+  // { path: "/*", redirect: "/login" },
 ];
 
 const router = new VueRouter.createRouter({
