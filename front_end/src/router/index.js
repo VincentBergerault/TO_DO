@@ -51,7 +51,7 @@ const routes = [
 
 const router = new VueRouter.createRouter({
   history: VueRouter.createWebHistory(),
-  base: process.env.TODO_FRONTEND_URL,
+  base: process.env.VUE_APP_TODO_FRONTEND_URL,
   routes,
 });
 
