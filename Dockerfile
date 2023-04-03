@@ -6,12 +6,11 @@ RUN npm install
 
 WORKDIR /usr/myapp/front_end
 COPY ./front_end .
+
 RUN npm install
-
-
 RUN npm run build
 
-COPY  /usr/myapp/front_end/dist /usr/myapp/back_end/app
+RUN mv /usr/myapp/front_end/dist/* /usr/myapp/back_end/app/views
 
 
 WORKDIR /usr/myapp/back_end

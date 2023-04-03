@@ -6,8 +6,10 @@ services:
       dockerfile: ./Dockerfile
     container_name: todo_backend
     restart: unless-stopped
-    networks:
-      - traefik_network
+    ports:
+      - 5010:5010
+    # networks:
+    #    - traefik_network
     environment:
       - TODO_BACKEND_URL=${TODO_BACKEND_URL}
       - MONGO_URL=${MONGO_URL}
@@ -25,7 +27,6 @@ services:
       - "traefik.http.services.todo_backend.loadbalancer.server.port=${BACK_END_PORT}"
       - "traefik.http.routers.todo_backend.tls=true"
       - "traefik.http.routers.todo_backend.tls.certresolver=leresolver"
-
-networks:
-  traefik_network:
-    external: true
+#networks:
+# traefik_network:
+#   external: true

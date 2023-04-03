@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+var history = require("connect-history-api-fallback");
 const index = require("./indexDB");
 const {
   login,
@@ -17,14 +18,15 @@ const path = __dirname + "/app/views/";
 index();
 
 const app = express();
-
-app.use(express.static(path));
-app.get("/", function (req, res) {
-  res.sendFile(path + "index.html");
-});
-
 app.use(express.json());
 
+app.use(
+  cookieSession({
+    name: "TODO_AUTH",
+    keys: [process.env.COOKIE_KEY],
+    maxAge: 24 * 60 * 60 * 1000,
+  })
+);
 app.use(
   cors({
     origin:
@@ -37,28 +39,23 @@ app.use(
     credentials: true,
   })
 );
-
-app.use(
-  cookieSession({
-    name: "TODO_AUTH",
-    keys: [process.env.COOKIE_KEY],
-    maxAge: 24 * 60 * 60 * 1000,
-  })
-);
-
-app.use("/api", isAuthenticated);
-
 app.get("/ping", (req, res) => {
   res.json({ message: "Hello, World!" });
 });
-app.post("/login", login);
-app.get("/logout", logout);
+app.post("/api/login", login);
+app.get("/api/logout", logout);
 
-app.use("/api", itemRoutes);
-app.use("/api", taskRoutes);
+app.use("/api", itemRoutes, isAuthenticated);
+app.use("/api", taskRoutes, isAuthenticated);
 
 app.get("/api/test", (req, res) => {
   res.json({ message: "Hello, World!" });
+});
+
+app.use(history());
+app.use(express.static(path));
+app.get("/", function (req, res) {
+  res.sendFile(path + "index.html");
 });
 
 app.listen(process.env.BACK_END_PORT, () => {
