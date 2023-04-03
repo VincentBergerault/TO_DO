@@ -48,7 +48,7 @@ app.use(
 
 app.use("/api", isAuthenticated);
 
-app.get("/", (req, res) => {
+app.get("/ping", (req, res) => {
   res.json({ message: "Hello, World!" });
 });
 app.post("/login", login);
