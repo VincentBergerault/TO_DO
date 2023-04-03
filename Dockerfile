@@ -1,11 +1,11 @@
 FROM node:latest
 
 WORKDIR /usr/myapp/back_end
-COPY . .
+COPY ./back_end .
 RUN npm install
 
 WORKDIR /usr/myapp/front_end
-COPY . .
+COPY ./front_end .
 RUN npm install
 
 
