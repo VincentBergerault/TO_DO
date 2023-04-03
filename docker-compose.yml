@@ -2,7 +2,7 @@ version: "3"
 services:
   todo_backend:
     build:
-      context: ./back_end
+      context: ./
       dockerfile: ./Dockerfile
     container_name: todo_backend
     restart: unless-stopped
@@ -10,12 +10,13 @@ services:
       - traefik_network
     environment:
       - TODO_BACKEND_URL=${TODO_BACKEND_URL}
-      - TODO_FRONTEND_URL=${TODO_FRONTEND_URL}
       - MONGO_URL=${MONGO_URL}
       - BACK_END_PORT=${BACK_END_PORT}
       - USER_EMAIL=${USER_EMAIL}
       - USER_PWD=${USER_PWD}
       - COOKIE_KEY=${COOKIE_KEY}
+      - VUE_APP_TODO_BACKEND_URL=${VUE_APP_TODO_BACKEND_URL}
+      - VUE_APP_NODE_ENV=${VUE_APP_NODE_ENV}
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=traefik_network"
@@ -24,27 +25,6 @@ services:
       - "traefik.http.services.todo_backend.loadbalancer.server.port=${BACK_END_PORT}"
       - "traefik.http.routers.todo_backend.tls=true"
       - "traefik.http.routers.todo_backend.tls.certresolver=leresolver"
-
-  todo_frontend:
-    build:
-      context: ./front_end
-      dockerfile: ./Dockerfile
-    container_name: todo_frontend
-    restart: unless-stopped
-    networks:
-      - traefik_network
-       environment:
-      - VUE_APP_TODO_BACKEND_URL=${VUE_APP_TODO_BACKEND_URL}
-      - VUE_APP_TODO_FRONTEND_URL=${VUE_APP_TODO_FRONTEND_URL}
-      - VUE_APP_NODE_ENV=${VUE_APP_NODE_ENV}
-    labels:
-      - "traefik.enable=true"
-      - "traefik.docker.network=traefik_network"
-      - "traefik.http.routers.todo_frontend.entrypoints=web,websecure"
-      - "traefik.http.routers.todo_frontend.rule=Host(`${TODO_FRONTEND_URL}`)"
-      - "traefik.http.services.todo_frontend.loadbalancer.server.port=8080"
-      - "traefik.http.routers.todo_frontend.tls=true"
-      - "traefik.http.routers.todo_frontend.tls.certresolver=leresolver"
 
 networks:
   traefik_network:

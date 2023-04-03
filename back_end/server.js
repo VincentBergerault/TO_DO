@@ -12,9 +12,16 @@ const itemRoutes = require("./Controllers/Item");
 const taskRoutes = require("./Controllers/Task");
 const cookieSession = require("cookie-session");
 
+const path = __dirname + "/app/views/";
+
 index();
 
 const app = express();
+
+app.use(express.static(path));
+app.get("/", function (req, res) {
+  res.sendFile(path + "index.html");
+});
 
 app.use(express.json());
 
@@ -22,8 +29,8 @@ app.use(
   cors({
     origin:
       process.env.DEV === "true"
-        ? "http://localhost:8080"
-        : "https://" + process.env.TODO_FRONTEND_URL,
+        ? "http://localhost:5010"
+        : "https://" + process.env.TODO_BACKEND_URL,
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     preflightContinue: false,
     optionsSuccessStatus: 204,

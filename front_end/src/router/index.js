@@ -44,12 +44,12 @@ const routes = [
       }
     },
   },
-  // { path: "/*", redirect: "/login" },
+  { path: "/*", redirect: "/login" },
 ];
 
 const router = new VueRouter.createRouter({
-  history: VueRouter.createWebHashHistory(),
-  base: process.env.VUE_APP_TODO_FRONTEND_URL,
+  history: VueRouter.createWebHistory(),
+  base: process.env.VUE_APP_TODO_BACKEND_URL,
   routes,
 });
 

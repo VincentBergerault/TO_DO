@@ -42,7 +42,6 @@ export default {
   methods: {
     async logout() {
       await axios.get("/logout");
-      // Remove the TODO_AUTH cookie
       this.$store.dispatch("logout");
     },
   },
