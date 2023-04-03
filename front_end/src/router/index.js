@@ -48,7 +48,7 @@ const routes = [
 ];
 
 const router = new VueRouter.createRouter({
-  history: VueRouter.createWebHistory(),
+  history: VueRouter.createWebHashHistory(),
   base: process.env.VUE_APP_TODO_FRONTEND_URL,
   routes,
 });
@@ -78,7 +78,6 @@ if (process.env.VUE_APP_NODE_ENV !== "development") {
 }
 
 function isAuthenticated() {
-  console.log(store.state.isLoggedIn);
   return store.state.isLoggedIn;
 }
 
