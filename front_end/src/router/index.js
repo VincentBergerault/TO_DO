@@ -74,7 +74,7 @@ router.beforeEach((to, from, next) => {
 
 // Only use HTML5 history mode in production
 if (process.env.VUE_APP_NODE_ENV !== "development") {
-  router.mode = "hash";
+  // router.mode = "hash";
 }
 
 function isAuthenticated() {
