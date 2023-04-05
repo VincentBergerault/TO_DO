@@ -30,9 +30,9 @@ app.use(
 app.use(
   cors({
     origin:
-      process.env.DEV === "true"
+      process.env.VUE_APP_DEV === "true"
         ? "http://localhost:5010"
-        : "https://" + process.env.TODO_BACKEND_URL,
+        : "https://" + process.env.VUE_APP_TODO_BACKEND_URL,
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     preflightContinue: false,
     optionsSuccessStatus: 204,

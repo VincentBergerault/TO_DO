@@ -8,25 +8,24 @@ services:
     restart: unless-stopped
     ports:
       - 5010:5010
-    # networks:
-    #    - traefik_network
+    networks:
+        - traefik_network
     environment:
-      - TODO_BACKEND_URL=${TODO_BACKEND_URL}
+      - VUE_APP_TODO_BACKEND_URL=${VUE_APP_TODO_BACKEND_URL}
       - MONGO_URL=${MONGO_URL}
       - BACK_END_PORT=${BACK_END_PORT}
       - USER_EMAIL=${USER_EMAIL}
       - USER_PWD=${USER_PWD}
       - COOKIE_KEY=${COOKIE_KEY}
-      - VUE_APP_TODO_BACKEND_URL=${VUE_APP_TODO_BACKEND_URL}
-      - VUE_APP_NODE_ENV=${VUE_APP_NODE_ENV}
+      - VUE_APP_DEV=${VUE_APP_DEV}
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=traefik_network"
       - "traefik.http.routers.todo_backend.entrypoints=web,websecure"
-      - "traefik.http.routers.todo_backend.rule=Host(`${TODO_BACKEND_URL}`)"
+      - "traefik.http.routers.todo_backend.rule=Host(`${VUE_APP_TODO_BACKEND_URL}`)"
       - "traefik.http.services.todo_backend.loadbalancer.server.port=${BACK_END_PORT}"
       - "traefik.http.routers.todo_backend.tls=true"
       - "traefik.http.routers.todo_backend.tls.certresolver=leresolver"
-#networks:
-# traefik_network:
-#   external: true
+networks:
+  traefik_network:
+    external: true

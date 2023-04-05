@@ -14,6 +14,5 @@ RUN mv /usr/myapp/front_end/dist/* /usr/myapp/back_end/app/views
 
 
 WORKDIR /usr/myapp/back_end
-
 EXPOSE $BACK_END_PORT
 CMD node server.js

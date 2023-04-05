@@ -73,7 +73,7 @@ router.beforeEach((to, from, next) => {
 });
 
 // Only use HTML5 history mode in production
-if (process.env.VUE_APP_NODE_ENV !== "development") {
+if (process.env.VUE_APP_DEV !== "true") {
   // router.mode = "hash";
 }
 
