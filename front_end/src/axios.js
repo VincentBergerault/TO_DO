@@ -4,8 +4,8 @@ import { store } from "@/store";
 const axiosInstance = axios.create({
   baseURL:
     process.env.VUE_APP_DEV === "true"
-      ? "http://" + process.env.VUE_APP_TODO_BACKEND_URL
-      : "https://" + process.env.VUE_APP_TODO_BACKEND_URL, // Replace this with your API base URL
+      ? "http://" + process.env.VUE_APP_TODO_URL
+      : "https://" + process.env.VUE_APP_TODO_URL, // Replace this with your API base URL
   withCredentials: true, // enable sending cookies with requests
 });
 

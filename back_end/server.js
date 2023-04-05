@@ -32,7 +32,7 @@ app.use(
     origin:
       process.env.VUE_APP_DEV === "true"
         ? "http://localhost:5010"
-        : "https://" + process.env.VUE_APP_TODO_BACKEND_URL,
+        : "https://" + process.env.VUE_APP_TODO_URL,
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     preflightContinue: false,
     optionsSuccessStatus: 204,

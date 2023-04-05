@@ -49,7 +49,7 @@ const routes = [
 
 const router = new VueRouter.createRouter({
   history: VueRouter.createWebHistory(),
-  base: process.env.VUE_APP_TODO_BACKEND_URL,
+  base: process.env.VUE_APP_TODO_URL,
   routes,
 });
 

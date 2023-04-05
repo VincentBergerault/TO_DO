@@ -11,7 +11,7 @@ services:
     networks:
         - traefik_network
     environment:
-      - VUE_APP_TODO_BACKEND_URL=${VUE_APP_TODO_BACKEND_URL}
+      - VUE_APP_TODO_URL=${VUE_APP_TODO_URL}
       - MONGO_URL=${MONGO_URL}
       - BACK_END_PORT=${BACK_END_PORT}
       - USER_EMAIL=${USER_EMAIL}
@@ -22,7 +22,7 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=traefik_network"
       - "traefik.http.routers.todo_backend.entrypoints=web,websecure"
-      - "traefik.http.routers.todo_backend.rule=Host(`${VUE_APP_TODO_BACKEND_URL}`)"
+      - "traefik.http.routers.todo_backend.rule=Host(`${VUE_APP_TODO_URL}`)"
       - "traefik.http.services.todo_backend.loadbalancer.server.port=${BACK_END_PORT}"
       - "traefik.http.routers.todo_backend.tls=true"
       - "traefik.http.routers.todo_backend.tls.certresolver=leresolver"
