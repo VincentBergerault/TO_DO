@@ -46,8 +46,8 @@ export default {
 
       // If the login is successful, redirect the user to the dashboard page
       if (response.data.success) {
-        this.$store.commit("setLoggedIn", true);
-        this.$router.push("/");
+        const authToken = response.data.token;
+        this.$store.commit("login", authToken);
       } else {
         // Display an error message to the user
         alert("Login failed. Please check your email and password.");

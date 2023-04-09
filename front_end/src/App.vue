@@ -27,22 +27,20 @@
 </template>
 
 <script>
-import axios from "@/axios.js";
 export default {
   name: "App",
   data() {
-    return {
-      isLoggedIn: true,
-    };
+    return {};
   },
-  created() {
-    // Check if user is logged in
-    // and set isLoggedIn accordingly
+  computed: {
+    isLoggedIn() {
+      return this.$store.state.isLoggedIn;
+    },
   },
+  created() {},
   methods: {
     async logout() {
-      await axios.get("/logout");
-      this.$store.dispatch("logout");
+      this.$store.commit("logout");
     },
   },
 };

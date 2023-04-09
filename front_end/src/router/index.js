@@ -37,7 +37,9 @@ const routes = [
     name: "login",
     component: Login,
     beforeEnter: (to, from, next) => {
-      if (isAuthenticated()) {
+      console.log("store.state.isLoggedIn");
+      console.log(store.state.isLoggedIn);
+      if (store.state.isLoggedIn) {
         next("/");
       } else {
         next();
@@ -54,9 +56,11 @@ const router = new VueRouter.createRouter({
 });
 
 router.beforeEach((to, from, next) => {
+  console.log("store.state.isLoggedIn");
+  console.log(store.state.isLoggedIn);
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     // check if the route requires authentication
-    if (!isAuthenticated()) {
+    if (!store.state.isLoggedIn) {
       // if the user is not authenticated, redirect to the login page
       next({
         path: "/login",
@@ -71,14 +75,5 @@ router.beforeEach((to, from, next) => {
     next();
   }
 });
-
-// Only use HTML5 history mode in production
-if (process.env.VUE_APP_DEV !== "true") {
-  // router.mode = "hash";
-}
-
-function isAuthenticated() {
-  return store.state.isLoggedIn;
-}
 
 export default router;

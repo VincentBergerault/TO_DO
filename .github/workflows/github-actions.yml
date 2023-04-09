@@ -28,4 +28,5 @@ jobs:
             fi
             cd TO_DO
             git pull origin main
+            echo $VUE_APP_TODO_URL > ./front_end/.env.production
             docker-compose up -d --build --force-recreate

@@ -23,7 +23,7 @@ export default {
   methods: {
     async AddGoal() {
       // Perform logout logic here
-      await axios.get("/api/test");
+      await axios.get("/test");
     },
   },
 };
