@@ -1,5 +1,5 @@
 import axios from "axios";
-//import { store } from "@/store";
+import { store } from "@/store";
 
 const axiosInstance = axios.create({
   baseURL:
@@ -12,7 +12,6 @@ const axiosInstance = axios.create({
   },
 });
 
-/*
 axiosInstance.interceptors.response.use(
   (response) => {
     return response;
@@ -24,6 +23,5 @@ axiosInstance.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-*/
 
 export default axiosInstance;
