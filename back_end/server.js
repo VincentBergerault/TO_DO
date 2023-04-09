@@ -38,7 +38,7 @@ app.use("/api", taskRoutes);
 
 app.get("/api/test", (req, res) => {
   console.log("test");
-  res.json({ message: "Hello, World!" });
+  res.json({ message: "connected" });
 });
 
 app.use(history());

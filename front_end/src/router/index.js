@@ -7,6 +7,8 @@ import Goals from "../views/Goals.vue";
 import Todo from "../views/Todo.vue";
 import Tobuy from "../views/Tobuy.vue";
 
+import axios from "@/axios.js";
+
 const routes = [
   {
     path: "/",
@@ -56,8 +58,7 @@ const router = new VueRouter.createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  console.log("store.state.isLoggedIn");
-  console.log(store.state.isLoggedIn);
+  axios.get("/test");
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     // check if the route requires authentication
     if (!store.state.isLoggedIn) {
