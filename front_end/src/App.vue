@@ -52,8 +52,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background: #1f1f1f;
-  overflow: hidden;
+  background: rgb(181, 255, 203);
 }
 
 #app {
