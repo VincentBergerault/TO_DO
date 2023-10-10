@@ -27,8 +27,9 @@ app.use(
     credentials: true,
   })
 );
-app.get("/ping", (req, res) => {
-  res.json({ message: "Hello, World!" });
+app.get("/healthcheck", (req, res) => {
+  let now = Date.now();
+  res.status(200).send(`OK - ${now}`);
 });
 app.post("/api/login", login);
 
